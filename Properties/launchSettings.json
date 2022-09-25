@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "MTI860-collector": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 30116,
+      "useSSL": false
+    }
+  }
+}
