@@ -56,21 +56,9 @@ namespace MTI860_collector
             {
                 id = System.Guid.NewGuid().ToString(),
                 username = cRequest.Username,
-                circles = new
-                {
-                    average = cRequest.Circles.Average(),
-                    data = cRequest.Circles
-                },
-                triangles = new
-                {
-                    average = cRequest.Triangles.Average(),
-                    data = cRequest.Triangles
-                },
-                stars = new
-                {
-                    average = cRequest.Stars.Average(),
-                    data = cRequest.Stars
-                }
+                laser = cRequest.Laser,
+                virtualPen = cRequest.VirtualPen,
+                handTracking = cRequest.HandTracking
             });
 
             return new OkResult();

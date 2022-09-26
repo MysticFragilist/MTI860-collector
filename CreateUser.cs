@@ -29,7 +29,7 @@ namespace MTI860_collector
         [OpenApiParameter(name: "name", In = ParameterLocation.Query, Required = true, Type = typeof(string), Description = "The **Name** parameter")]
         [OpenApiResponseWithBody(statusCode: HttpStatusCode.OK, contentType: "text/plain", bodyType: typeof(string), Description = "The OK response")]
         public async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Admin, "get", "post", Route = null)] HttpRequest req,
+            [HttpTrigger(AuthorizationLevel.Admin, "get", "post", Route = "user/create")] HttpRequest req,
             [CosmosDB(databaseName: "vr-data", collectionName: "users",
             ConnectionStringSetting = "CosmosDbConnectionString"
             )]IAsyncCollector<dynamic> documentsOut)

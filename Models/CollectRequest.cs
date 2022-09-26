@@ -8,6 +8,19 @@ public class CollectRequest
 
     [JsonProperty("username")]
     public string Username { get; set; }
+    
+    [JsonProperty("laser")]
+    public MethodCollect Laser { get; set; }
+    
+    [JsonProperty("virtualPen")]
+    public MethodCollect VirtualPen { get; set; }
+    
+    [JsonProperty("handTracking")]
+    public MethodCollect HandTracking { get; set; }
+}
+
+public class MethodCollect
+{
 
     [JsonProperty("circles")]
     public IEnumerable<double> Circles { get; set; }
