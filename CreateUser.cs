@@ -1,4 +1,7 @@
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
@@ -32,21 +35,38 @@ namespace MTI860_collector
             [HttpTrigger(AuthorizationLevel.Admin, "get", "post", Route = "user/create")] HttpRequest req,
             [CosmosDB(databaseName: "vr-data", collectionName: "users",
             ConnectionStringSetting = "CosmosDbConnectionString"
-            )]IAsyncCollector<dynamic> documentsOut)
+            )]IAsyncCollector<dynamic> documentsOut,
+            [CosmosDB(
+                databaseName: "vr-data", collectionName: "users",
+                ConnectionStringSetting = "CosmosDbConnectionString",
+                SqlQuery = "SELECT * FROM c ORDER BY c._ts desc")]
+                IEnumerable<dynamic> users)
         {
             _logger.LogInformation("C# HTTP trigger function processed a request.");
 
+            int nextUsername = 0;
+
+            if (!users.Any())
+            {
+                nextUsername = 1;
+            }
+            else
+            {
+                var lastUser = users.OrderByDescending(x => x.createdBy).FirstOrDefault();
+                nextUsername = lastUser.username + 1;
+            }
+
             string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
-            UserRequest cCreateUser = JsonConvert.DeserializeObject<UserRequest>(requestBody);
 
             await documentsOut.AddAsync(new
             {
-                id = System.Guid.NewGuid().ToString(),
-                username = cCreateUser.Username,
+                id = Guid.NewGuid().ToString(),
+                createdBy = DateTime.UtcNow,
+                username = nextUsername,
             });
 
 
-            return new OkResult();
+            return new OkObjectResult(nextUsername);
         }
     }
 }

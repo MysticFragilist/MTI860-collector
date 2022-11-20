@@ -23,11 +23,20 @@ public class MethodCollect
 {
 
     [JsonProperty("circles")]
-    public IEnumerable<double> Circles { get; set; }
+    public IEnumerable<ShapeData> Circles { get; set; }
 
     [JsonProperty("triangles")]
-    public IEnumerable<double> Triangles { get; set; }
+    public IEnumerable<ShapeData> Triangles { get; set; }
 
     [JsonProperty("stars")]
-    public IEnumerable<double> Stars { get; set; }
+    public IEnumerable<ShapeData> Stars { get; set; }
+}
+
+
+public class ShapeData
+{
+    public double ScoreCircle { get; set; }
+    public double ScoreTriangle { get; set; }
+    public double ScoreStar { get; set; }
+    public double Time { get; set; }
 }
