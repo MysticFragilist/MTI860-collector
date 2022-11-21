@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <AzureFunctionsVersion>beta</AzureFunctionsVersion>
     <RootNamespace>MTI860_collector</RootNamespace>
     <DockerFastModeProjectMountDirectory>/home/site/wwwroot</DockerFastModeProjectMountDirectory>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
