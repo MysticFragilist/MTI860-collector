@@ -15,7 +15,7 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 
-namespace MTI860_collector
+namespace MTI860_collector.Functions
 {
     public static class Collect
     {
@@ -49,7 +49,7 @@ namespace MTI860_collector
             if (!userExists) return new BadRequestObjectResult($"username {cRequest.Username} non-existing");
 
             var collect = collects­.FirstOrDefault(x => x.username == cRequest.Username);
-            if(collect != null) return new BadRequestObjectResult($"Collect already happened for username {cRequest.Username}");
+            if (collect != null) return new BadRequestObjectResult($"Collect already happened for username {cRequest.Username}");
 
             await documentsOut.AddAsync(new
             {

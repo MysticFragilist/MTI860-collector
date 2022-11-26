@@ -14,7 +14,7 @@ using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Enums;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
-namespace MTI860_collector
+namespace MTI860_collector.Functions
 {
     public static class CreateUser
     {
