@@ -1,0 +1,14 @@
+{
+  "profiles": {
+    "MTI860": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7022"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "httpPort": 32097,
+      "useSSL": false
+    }
+  }
+}
